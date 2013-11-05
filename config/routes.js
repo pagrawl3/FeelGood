@@ -7,12 +7,14 @@ module.exports = function(params) {
 	//__IMPORT ALL THE CONTROLLERS
 	var users  			= require('../app/controllers/users');
 	var main  			= require('../app/controllers/main');
+	var feelgoods		= require('../app/controllers/feelgoods');
 
-	if (configuredModules['login']) {
-		app.get ('/auth/facebook'			, passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/' }), users.signin)
-	 	app.get ('/auth/facebook/callback'	, passport.authenticate('facebook', { failureRedirect: '/' }), users.authCallback)
-		app.get ('/logout'					, users.logout)
-	}
+	app.get ('/auth/facebook'			, passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/' }), users.signin)
+ 	app.get ('/auth/facebook/callback'	, passport.authenticate('facebook', { failureRedirect: '/' }), users.authCallback)
+	app.get ('/logout'					, users.logout)
+
+	app.post('/feelgoods/create', 	feelgoods.create)
+	app.post('/feelgoods/retrieve', feelgoods.retrieve)
 
  	//__FINALLY IF THERE IS NO KNOWN URL INCL. '/' THEN GO TO HOME
  	app.get('/*', main.index);
