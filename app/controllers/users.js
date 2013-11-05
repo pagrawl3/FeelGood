@@ -14,7 +14,7 @@ exports.login = function (req, res) {
 exports.signin = function (req, res) {}
 
 //Facebook callback, simple redirect to home after succesful signin
-exports.authCallback = function (req, res, next) { res.redirect('/home') }
+exports.authCallback = function (req, res, next) { res.redirect('/home5') }
 
 //Logs out the user, self-explanatory
 exports.logout = function (req, res) {
