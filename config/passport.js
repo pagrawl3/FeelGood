@@ -23,9 +23,9 @@ module.exports = function(passport) {
 	//USE FACEBOOK STRATEGY -- allows facebook login auth
 	// Function used while registering/logging in with facebook
 	passport.use(new FacebookStrategy({
-			clientID	: '460675210689344',
-			clientSecret: '97d194e36d50d710deb364b76a8078f5',
-			callbackURL	: 'http://54.204.41.117/auth/facebook/callback'
+			clientID	: '262701717210609',
+			clientSecret: 'ccf7af6a06f5bbb386a23c34b19a647b',
+			callbackURL	: 'http://feelgood.prath.am/auth/facebook/callback'
 		},
 		function(accessToken, refreshToken, profile, done) {
 			User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
