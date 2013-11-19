@@ -10,7 +10,7 @@ var userSchema = new mongoose.Schema({
 		name		: String,
 		email		: { type : String , lowercase : true, unique : true },
 		username 	: { type : String, unique : true },
-		hash		: String
+		hash		: String,
 		feelgoods 	: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FeelGoods' }]
 })
 
