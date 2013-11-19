@@ -17,6 +17,7 @@ module.exports = function(params) {
 	app.post('/dailygoods/retrieve', dailygoods.retrieve)
 
 	app.post('/users/create', 	users.create)
+	app.post('/users/retrieve',	users.retrieve)
 	// app.post('/users/create', 	users.create)
 
  	//__FINALLY IF THERE IS NO KNOWN URL INCL. '/' THEN GO TO HOME
