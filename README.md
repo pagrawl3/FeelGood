@@ -56,6 +56,72 @@ All the request made to the server must use the POST protocol. The server's resp
 
 <hr>
 
+**Retrieve User**
+----
+  Retrieves all user information from the database including the dailygoods
+
+* **URL**
+
+  `/users/retrieve`
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+ 
+   `username=[string]` <br>
+   `hash    =[hashed password]` <br>
+
+* **Success Response:**
+
+    ```json
+    {
+      "success": true,
+      "user": {
+          "__v": 3,
+          "_id": "528bc79a5042fd9136000001",
+          "email": "mail@prath.am",
+          "hash": "blah",
+          "username": "pagrawl3",
+          "dailygoods": [
+              {
+                  "username": "pagrawl3",
+                  "dailygood": "had a great day",
+                  "_id": "528bc7bb5042fd9136000002",
+                  "__v": 0,
+                  "date": "2013-11-19T20:19:07.594Z"
+              },
+              {
+                  "username": "pagrawl3",
+                  "dailygood": "woah it works!",
+                  "_id": "528bc7c75042fd9136000003",
+                  "__v": 0,
+                  "date": "2013-11-19T20:19:19.142Z"
+              },
+              {
+                  "username": "pagrawl3",
+                  "dailygood": "woah it works2!",
+                  "_id": "528bcc325042fd9136000004",
+                  "__v": 0,
+                  "date": "2013-11-19T20:38:10.431Z"
+              }
+          ]
+      }
+    }
+    ```
+ 
+* **Error Response:**
+
+  ```json
+  {
+    "success": false,
+    "error": "Please send a valid username/hash"
+  }
+  ```
+
+<hr>
+
 **Create DailyGood**
 ----
   Creates a dailygood for the given username and links it to that user
