@@ -11,7 +11,7 @@ var userSchema = new mongoose.Schema({
 		email		: { type : String , lowercase : true, unique : true },
 		username 	: { type : String, unique : true },
 		hash		: String,
-		feelgoods 	: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FeelGoods' }]
+		dailygoods 	: [{ type: mongoose.Schema.Types.ObjectId, ref: 'DailyGoods' }]
 })
 
 //Finally PUBLISH the model to be used in other files and storage etc.

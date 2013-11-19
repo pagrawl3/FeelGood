@@ -7,14 +7,14 @@ module.exports = function(params) {
 	//__IMPORT ALL THE CONTROLLERS
 	var users  			= require('../app/controllers/users');
 	var main  			= require('../app/controllers/main');
-	var feelgoods		= require('../app/controllers/feelgoods');
+	var dailygoods		= require('../app/controllers/dailygoods');
 
-	app.get ('/auth/facebook'			, passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/' }), users.signin)
- 	app.get ('/auth/facebook/callback'	, passport.authenticate('facebook', { failureRedirect: '/' }), users.authCallback)
-	app.get ('/logout'					, users.logout)
+	// app.get ('/auth/facebook'			, passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/' }), users.signin)
+ 	// app.get ('/auth/facebook/callback'	, passport.authenticate('facebook', { failureRedirect: '/' }), users.authCallback)
+	// app.get ('/logout'					, users.logout)
 
-	app.post('/feelgoods/create', 	feelgoods.create)
-	app.post('/feelgoods/retrieve', feelgoods.retrieve)
+	app.post('/dailygoods/create', 	dailygoods.create)
+	app.post('/dailygoods/retrieve', dailygoods.retrieve)
 
 	app.post('/users/create', 	users.create)
 	// app.post('/users/create', 	users.create)
