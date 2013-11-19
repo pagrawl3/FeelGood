@@ -5,11 +5,10 @@ API
 ----
 The API is currently hosted on an Amazon EC2 Server. Foe ease of use I've routed the IP through my domain. The Apex is http://feelgood.prath.am/
 
-There are currently 3 API end points.
-One of them is for creating a user, the other 2 are for the creation and retrieval of the dailygoods.
+There are currently 4 API end points.
 The random quote spitter is WIP
 
-All the request made to the server must use the POST protocol. The server's response is in JSON format.
+All the requests made to the server must use the POST protocol. The server's response is in JSON format.
 
 **Create User**
 ----
