@@ -16,6 +16,9 @@ module.exports = function(params) {
 	app.post('/feelgoods/create', 	feelgoods.create)
 	app.post('/feelgoods/retrieve', feelgoods.retrieve)
 
+	app.post('/users/create', 	users.create)
+	// app.post('/users/create', 	users.create)
+
  	//__FINALLY IF THERE IS NO KNOWN URL INCL. '/' THEN GO TO HOME
  	app.get('/*', main.index);
 }

@@ -27,32 +27,37 @@ exports.session = function (req, res) {
 	res.send({redirect: '/'});
 }
 
-// //Learn more about this. But from what I can understand, its used for URL route logic
-// exports.user = function (req, res, next, id) {
-//   User
-//     .findOne({ _id : id })
-//     .exec(function (err, user) {
-//       if (err) return next(err)
-//       if (!user) return next(new Error('Failed to load User ' + id))
-//       req.profile = user
-//       next()
-//     })
-// }
+exports.create = function (req, res) {
+	if (req.body.username && req.body.hash && req.body.email) {
+		
+		console.log(req.body.username, req.body.hash, req.body.email);
+		console.log('Adding the user');
 
-// // Used while registering with Facebook
-// // Checks if the SmartFolder username chosen by the user has already been taken
-// exports.fbRegistration = function(config) {
-// 	return function (data, socket) {
-// 		User.find({username : data.username}, function(err, docs) {
-// 			if(docs.length == 0) {
-// 				myusername = data.username
-// 				// NOTE: Listeners for both the below emits are in index.js (client-side)
-// 				// This proceeds to register the user
-// 				socket.emit('fbRegistrationSuccessful', {success: true})
-// 			} else {
-// 				// This keeps the user on the registration page
-// 				socket.emit('fbRegistrationFailed', {success: false})
-// 			}
-// 		})
-// 	}
-// }
+		var newUser = new User({
+			username: req.body.username,
+			hash	: req.body.hash,
+			email	: req.body.email
+		})
+
+		newUser.save(function(err, user) {
+			if (!err) {
+				res.send({
+					'success' 	: true,
+					'user'		: user
+				})
+			}
+			else {
+				res.send({
+					'success' 	: false,
+					'error'		: 'Internal Save Error Occured'
+				})
+			}
+		})
+		
+	}
+	else
+		res.send({
+			'success'	: false,
+			'error' 	: 'Please send a valid username, password, and email'
+		});
+}
