@@ -71,15 +71,22 @@ exports.create = function (req, res) {
 exports.retrieve = function (req, res) {
 	if (req.body.username) {
 		User.find({username: req.body.username}).populate('dailygoods').exec(function(err, user) {
-			if (!err && req.body.hash == user[0].hash) {
-				res.send({
-					'success'		: true,
-					'dailygoods' 	: user[0].dailygoods
-				});
+			if (!err && user[0]) {
+				if (req.body.hash == user[0].hash) {
+					res.send({
+						'success'		: true,
+						'dailygoods' 	: user[0].dailygoods
+					});
+				} else {
+					res.send({
+						'success'	: false,
+						'error' 	: 'Username/Hash Incorrect'
+					});	
+				}
 			} else {
 				res.send({
 					'success'	: false,
-					'error' 	: 'Username/Hash Incorrect'
+					'error' 	: 'Username not found'
 				});
 			}
 		});

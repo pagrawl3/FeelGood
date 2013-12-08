@@ -65,7 +65,7 @@ exports.create = function (req, res) {
 exports.retrieve = function(req, res) {
 	if (req.body.username && req.body.hash) {
 		User.find({username: req.body.username}).populate('dailygoods').exec(function(err, user) {
-			if (!err) {
+			if (!err && user[0]) {
 				if (req.body.hash == user[0].hash) {
 					res.send({
 						'success'		: true,
