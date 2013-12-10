@@ -225,3 +225,111 @@ All the requests made to the server must use the POST protocol. The server's res
     "error": "Username/Hash Incorrect"
   }
   ```
+  
+**Create a weekly (Weekly Challenge + Quote)**
+----
+  Allows a weekly to be uploaded
+
+* **URL**
+
+  `/weekly/create`
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+ 
+   `week = [Number]` <br>
+   `quote = [String]` <br>
+   `challenge = [String]` <br>
+    
+* **Success Response:**
+
+  ```json
+  {
+    "success": true,
+    "weekly": {
+        "__v": 0,
+        "challenge": "Ask someone how they are doing, really doing. Take the time to get an honest and thorough
+                      response.",
+        "quote": "Life is 10% what happens to me and 90% of how I react to it. –John Maxwell",
+        "week": 3,
+        "_id": "52a788e30f8fe85707000003"
+    }
+  }
+  ```
+  
+ 
+* **Error Response:**
+
+  ```json
+  {
+    "success": false,
+    "error": "Please send all required parameters"
+  }
+  ```
+
+**Retrieve a single weekly or all weeklies (Weekly Challenge + Quote)**
+----
+  Allows a weekly to be retrieved. If no week is specified, all weeklies are retrieved.
+
+* **URL**
+
+  `/weekly/retrieve`
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+ 
+   `week = [Number] -- OPTIONAL` <br>
+    
+* **Success Response:**
+
+  <h5> NO WEEK SPECIFIED </h5>
+  ```json
+  {
+    "success": true,
+    "weekly": [
+        {
+            "challenge": "Make a list of 25 things you are grateful for.  Put this somewhere you'll see it.",
+            "quote": "Strive not to be a success, but rather to be of value. –Albert Einstein",
+            "week": 1,
+            "_id": "52a787690f8fe85707000001",
+            "__v": 0
+        },
+        {
+            "challenge": "Write someone a note and deliver it to them secretly. ",
+            "quote": "We become what we think about. –Earl Nightingale",
+            "week": 2,
+            "_id": "52a787a70f8fe85707000002",
+            "__v": 0
+        },
+        {
+            "challenge": "Ask someone how they are doing, really doing.  Take the time to get an honest
+                          and thorough response.",
+            "quote": "Life is 10% what happens to me and 90% of how I react to it. –John Maxwell",
+            "week": 3,
+            "_id": "52a788e30f8fe85707000003",
+            "__v": 0
+        }
+    ]
+  }
+  ```
+  
+  <h5> WEEK 3 SPECIFIED </h5>
+  ```json
+  {
+    "success": true,
+    "weekly": {
+        "challenge": "Ask someone how they are doing, really doing.  Take the time to get an honest
+                      and thorough response.",
+        "quote": "Life is 10% what happens to me and 90% of how I react to it. –John Maxwell",
+        "week": 3,
+        "_id": "52a788e30f8fe85707000003",
+        "__v": 0
+    }
+  }
+  ```
