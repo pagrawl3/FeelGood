@@ -8,6 +8,7 @@ module.exports = function(params) {
 	var users  			= require('../app/controllers/users');
 	var main  			= require('../app/controllers/main');
 	var dailygoods		= require('../app/controllers/dailygoods');
+	var weekly			= require('../app/controllers/weekly');
 
 	// app.get ('/auth/facebook'			, passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/' }), users.signin)
  	// app.get ('/auth/facebook/callback'	, passport.authenticate('facebook', { failureRedirect: '/' }), users.authCallback)
@@ -19,6 +20,9 @@ module.exports = function(params) {
 	app.post('/users/create', 	users.create)
 	app.post('/users/retrieve',	users.retrieve)
 	// app.post('/users/create', 	users.create)
+
+	app.post('/weekly/create', weekly.create)
+	app.post('/weekly/retrieve', weekly.retrieve)
 
  	//__FINALLY IF THERE IS NO KNOWN URL INCL. '/' THEN GO TO HOME
  	app.get('/*', main.index);
