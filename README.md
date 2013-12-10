@@ -5,8 +5,7 @@ API
 ----
 The API is currently hosted on an Amazon EC2 Server. Foe ease of use I've routed the IP through my domain. The Apex is http://feelgood.prath.am/
 
-There are currently 4 API end points.
-The random quote spitter is WIP
+There are currently 6 API end points including weekly support (quote+challenge)
 
 All the requests made to the server must use the POST protocol. The server's response is in JSON format.
 
