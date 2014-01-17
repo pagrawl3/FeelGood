@@ -11,7 +11,7 @@ exports.create = function (req, res) {
 
 		User.find({username: req.body.username}, function(err, user) {
 			if (!err && user[0]) {
-				if (req.body.hash == user[0].hash)
+				if (req.body.hash == user[0].hash) {
 					if (req.body.date) {
 						var newDailyGood = new DailyGood({
 											username 	: req.body.username,
@@ -26,7 +26,6 @@ exports.create = function (req, res) {
 										})
 					}
 					
-
 					newDailyGood.save(function(err, dailygood) {
 						if (!err) {
 							user[0].dailygoods.push(dailygood._id);
